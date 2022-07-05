@@ -1,4 +1,5 @@
 using bookshelf_web_app.Data;
+using bookshelf_web_app.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
