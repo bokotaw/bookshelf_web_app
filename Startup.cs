@@ -35,6 +35,11 @@ namespace bookshelf_web_app
                     .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddHttpClient();
+            services.AddHttpClient("myApi", c =>
+            {
+                c.BaseAddress = new Uri(Configuration["MyAPI:API"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
