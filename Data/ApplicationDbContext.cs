@@ -18,6 +18,10 @@ namespace bookshelf_web_app.Data
         {
             base.OnModelCreating(builder);
             builder.HasDefaultSchema("Identity");
+            builder.Entity<MyBooks>(entity =>
+            {
+                entity.ToTable(name: "MyBooks");
+            });
             builder.Entity<IdentityUser>(entity =>
             {
                 entity.ToTable(name: "User");
