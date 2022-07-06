@@ -5,12 +5,44 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome in BookShelf</h1>
+    <h3>The site uses the IT Bookstore API</h3>
+    <p>Learn about <a href="https://api.itbook.store/">IT Bookstore API</a>.</p>
+</div>
+<div class="row">
+    @foreach (var item in Model.books)
+    {
+        <div class="col-md-3 d-flex" style="width: 18rem;padding-bottom:1rem">
+            <div class="card text-center">
+                <div class="card-header">
+                    ISBN @item.isbn13
+                </div>
+                <div class="card-body">
+                    <img src="@item.image" class="card-img-top" alt="No image">
+                    <h5 class="card-title">@item.title</h5>
+                </div>
+                <div class="card-footer">
+                    <div class="row align-items-end justify-content-end">
+                        <div class="col-4">
+                            @if (String.Equals(item.price, "$0.00"))
+                            {
+                                <h2><span class="badge badge-success">Free</span></h2>
+                            }
+                            else
+                            {
+                                <h2><span class="badge badge-secondary">@item.price</span></h2>
+                            }
+                        </div>
+                        <div class="col-8">
+                            <h2>
+                                <a asp-controller="Home" asp-action="Detalis" asp-route-isbn13="@item.isbn13" class="btn btn-info"><i class="bi bi-info-circle"></i> Detalis</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
-@foreach (var item in Model.books)
-{
-    <img src="@item.image"/>
-}
 
